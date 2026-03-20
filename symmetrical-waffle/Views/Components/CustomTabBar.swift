@@ -1,12 +1,9 @@
 import UIKit
 
 final class CustomTabBar: UIView {
-
-    
-
     var onChatTap: (() -> Void)?
     var onProfileTap: (() -> Void)?
-
+    
     private let centerButtonSize: CGFloat = 66
     
     private let backgroundContainer: UIView = {
@@ -26,7 +23,7 @@ final class CustomTabBar: UIView {
     
     
     private let shapeMaskLayer = CAShapeLayer()
-
+    
     
     private let homeTab = createTabButton(asset: "home", sfSymbol: "house")
     private let chatTab = createTabButton(asset: "chatTab", sfSymbol: "message.fill")
@@ -36,8 +33,8 @@ final class CustomTabBar: UIView {
     
     private let centerButton: UIView = {
         let v = UIView()
-        v.backgroundColor = .white 
-        v.layer.cornerRadius = 33 
+        v.backgroundColor = .white
+        v.layer.cornerRadius = 33
         
         
         v.layer.shadowColor = UIColor.black.cgColor
@@ -60,9 +57,9 @@ final class CustomTabBar: UIView {
         ])
         return v
     }()
-
     
-
+    
+    
     private static func createTabButton(asset: String, sfSymbol: String) -> UIButton {
         let btn = UIButton(type: .system)
         let img = UIImage(named: asset) ?? UIImage(systemName: sfSymbol)
@@ -71,21 +68,21 @@ final class CustomTabBar: UIView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }
-
     
-
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
     }
-
     
-
+    
+    
     private func setupUI() {
         clipsToBounds = false
         
@@ -112,7 +109,7 @@ final class CustomTabBar: UIView {
         addSubview(centerButton)
         NSLayoutConstraint.activate([
             centerButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            centerButton.centerYAnchor.constraint(equalTo: topAnchor, constant: 16), 
+            centerButton.centerYAnchor.constraint(equalTo: topAnchor, constant: 16),
             centerButton.widthAnchor.constraint(equalToConstant: centerButtonSize),
             centerButton.heightAnchor.constraint(equalToConstant: centerButtonSize),
         ])
@@ -122,38 +119,38 @@ final class CustomTabBar: UIView {
         addSubview(chatTab)
         addSubview(profileTab)
         addSubview(bellTab)
-
+        
         chatTab.addTarget(self, action: #selector(handleChatTap), for: .touchUpInside)
         profileTab.addTarget(self, action: #selector(handleProfileTap), for: .touchUpInside)
-
+        
         let iconSize: CGFloat = 26
-        let iconYOffset: CGFloat = 26 
-
+        let iconYOffset: CGFloat = 26
+        
         NSLayoutConstraint.activate([
             
             chatTab.centerYAnchor.constraint(equalTo: topAnchor, constant: iconYOffset),
-            chatTab.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -62), 
+            chatTab.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -62),
             chatTab.widthAnchor.constraint(equalToConstant: iconSize),
             chatTab.heightAnchor.constraint(equalToConstant: iconSize),
-
+            
             homeTab.centerYAnchor.constraint(equalTo: topAnchor, constant: iconYOffset),
-            homeTab.trailingAnchor.constraint(equalTo: chatTab.leadingAnchor, constant: -38), 
+            homeTab.trailingAnchor.constraint(equalTo: chatTab.leadingAnchor, constant: -38),
             homeTab.widthAnchor.constraint(equalToConstant: iconSize),
             homeTab.heightAnchor.constraint(equalToConstant: iconSize),
-
+            
             
             profileTab.centerYAnchor.constraint(equalTo: topAnchor, constant: iconYOffset),
             profileTab.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 62),
             profileTab.widthAnchor.constraint(equalToConstant: iconSize),
             profileTab.heightAnchor.constraint(equalToConstant: iconSize),
-
+            
             bellTab.centerYAnchor.constraint(equalTo: topAnchor, constant: iconYOffset),
             bellTab.leadingAnchor.constraint(equalTo: profileTab.trailingAnchor, constant: 38),
             bellTab.widthAnchor.constraint(equalToConstant: iconSize),
             bellTab.heightAnchor.constraint(equalToConstant: iconSize),
         ])
     }
-
+    
     @objc private func handleChatTap() {
         onChatTap?()
     }
@@ -161,7 +158,7 @@ final class CustomTabBar: UIView {
     @objc private func handleProfileTap() {
         onProfileTap?()
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setupCutoutMask()
@@ -170,7 +167,7 @@ final class CustomTabBar: UIView {
     private func setupCutoutMask() {
         let w = backgroundContainer.bounds.width
         let h = backgroundContainer.bounds.height
-        let cornerRadius: CGFloat = 12 
+        let cornerRadius: CGFloat = 12
         
         let path = UIBezierPath()
         
@@ -184,8 +181,8 @@ final class CustomTabBar: UIView {
         
         
         
-        let holeRadius: CGFloat = 43 
-        let circleCenterY: CGFloat = 16 
+        let holeRadius: CGFloat = 43
+        let circleCenterY: CGFloat = 16
         let holeCenter = CGPoint(x: w / 2, y: circleCenterY)
         
         
@@ -229,7 +226,7 @@ final class CustomTabBar: UIView {
         
         shapeMaskLayer.path = path.cgPath
     }
-
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let convertedPoint = centerButton.convert(point, from: self)
         if centerButton.bounds.contains(convertedPoint) {

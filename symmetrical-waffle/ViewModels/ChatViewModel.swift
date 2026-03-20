@@ -1,21 +1,13 @@
 import Foundation
 
 final class ChatViewModel {
-    
-    
-    
     private(set) var messages: [ChatMessage] = []
     
-    
     var onMessagesUpdated: (() -> Void)?
-    
-    
     
     init() {
         loadMockMessages()
     }
-    
-    
     
     private func loadMockMessages() {
         
@@ -30,8 +22,6 @@ final class ChatViewModel {
         ]
         onMessagesUpdated?()
     }
-    
-    
     
     func sendMessage(_ text: String) {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)

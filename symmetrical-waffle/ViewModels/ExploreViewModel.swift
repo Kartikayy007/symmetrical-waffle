@@ -1,27 +1,17 @@
-
-
-
-
-
 import Foundation
 
 class ExploreViewModel {
-
-    
     private(set) var stories: [Story] = []
     private(set) var posts: [Post] = []
 
-    
     var onStoriesUpdated: (([Story]) -> Void)?
     var onPostsUpdated: (([Post]) -> Void)?
 
-    
     init() {
         loadStories()
         loadPosts()
     }
 
-    
     private func loadStories() {
         stories = [
             Story(username: "You", imageName: "story1", isYourStory: true),

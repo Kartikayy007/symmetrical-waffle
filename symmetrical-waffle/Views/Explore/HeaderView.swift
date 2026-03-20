@@ -1,14 +1,6 @@
-
-
-
-
-
 import UIKit
 
 final class HeaderView: UIView {
-
-    
-
     private let cameraButton: UIButton = {
         let btn = UIButton(type: .system)
         let img = UIImage(named: "ExploreCamera")?
@@ -23,7 +15,7 @@ final class HeaderView: UIView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-
+    
     private let titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Explore"
@@ -33,7 +25,7 @@ final class HeaderView: UIView {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
-
+    
     private let bellButton: UIButton = {
         let btn = UIButton(type: .system)
         let img = UIImage(named: "exploreBell")?
@@ -48,37 +40,35 @@ final class HeaderView: UIView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-
     
-
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
     }
-
     
-
     private func setupUI() {
         addSubview(cameraButton)
         addSubview(titleLabel)
         addSubview(bellButton)
-
+        
         NSLayoutConstraint.activate([
             
             cameraButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             cameraButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             cameraButton.widthAnchor.constraint(equalToConstant: 42),
             cameraButton.heightAnchor.constraint(equalToConstant: 42),
-
+            
             
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-
+            
             
             bellButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             bellButton.centerYAnchor.constraint(equalTo: centerYAnchor),

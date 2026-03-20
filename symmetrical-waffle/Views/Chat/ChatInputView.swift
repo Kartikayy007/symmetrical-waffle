@@ -4,8 +4,8 @@ final class ChatInputView: UIView {
     
     private let pillBackground: UIView = {
         let v = UIView()
-        v.backgroundColor = .white 
-        v.layer.cornerRadius = 24  
+        v.backgroundColor = .white
+        v.layer.cornerRadius = 24
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -35,8 +35,8 @@ final class ChatInputView: UIView {
     
     let textField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = " " 
-        tf.backgroundColor = .clear 
+        tf.placeholder = " "
+        tf.backgroundColor = .clear
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -63,7 +63,7 @@ final class ChatInputView: UIView {
             pillBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             pillBackground.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             pillBackground.centerYAnchor.constraint(equalTo: centerYAnchor),
-            pillBackground.heightAnchor.constraint(equalToConstant: 48), 
+            pillBackground.heightAnchor.constraint(equalToConstant: 48),
             
             cameraButton.leadingAnchor.constraint(equalTo: pillBackground.leadingAnchor, constant: 4),
             cameraButton.centerYAnchor.constraint(equalTo: pillBackground.centerYAnchor),

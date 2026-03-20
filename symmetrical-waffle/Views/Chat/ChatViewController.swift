@@ -1,12 +1,7 @@
 import UIKit
 
 final class ChatViewController: UIViewController {
-    
-     
-    
     private let viewModel = ChatViewModel()
-    
-     
     
     private let backgroundImageView: UIImageView = {
         let iv = UIImageView()
@@ -49,7 +44,7 @@ final class ChatViewController: UIViewController {
         return v
     }()
     
-     
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +55,8 @@ final class ChatViewController: UIViewController {
         headerView.closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
     }
     
-     
-    
     private func setupUI() {
-        view.backgroundColor = .white 
+        view.backgroundColor = .white
         
         view.addSubview(backgroundImageView)
         view.addSubview(containerView)
@@ -114,7 +107,7 @@ final class ChatViewController: UIViewController {
         }
     }
     
-     
+    
     
     @objc private func closeTapped() {
         dismiss(animated: true, completion: nil)
@@ -128,7 +121,7 @@ final class ChatViewController: UIViewController {
     }
 }
 
- 
+
 
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     
